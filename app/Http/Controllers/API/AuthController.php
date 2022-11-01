@@ -39,20 +39,21 @@ class AuthController extends Controller
         }
     }
 
-    public function login(Request $request) {
+    public function login(Request $request): JsonResponse
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|max:255',
             'password' => 'required',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return response()->json([
                 'validation_errors' => $validator->messages()
             ]);
-        }else {
+        } else {
             $user = User::where('email', $request->email)->first();
 
-            if(!$user || !Hash::check($request->password, $user->password)) {
+            if (!$user || !Hash::check($request->password, $user->password)) {
                 return response()->json([
                     'status' => 401,
                     'message' => 'Invalid Credentials'
@@ -69,11 +70,13 @@ class AuthController extends Controller
         }
     }
 
-    public function logout() {
+    public function logout(): JsonResponse
+    {
         auth()->user()->tokens()->delete();
         return response()->json([
-            'status'=>200,
-            'message'=>'Logged Out Successfully',
+            'status' => 200,
+            'message' => 'Logged Out Successfully',
         ]);
     }
+
 }
