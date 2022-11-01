@@ -6,6 +6,7 @@ import Login from "./components/frontend/auth/Login";
 import axios from "axios";
 import {Redirect} from "react-router-dom";
 import Register from "./components/frontend/auth/Register";
+import AdminPrivateRoute from "./AdminPrivateRoute";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000";
 axios.defaults.headers.post['Accept'] = 'application/json';
@@ -32,8 +33,11 @@ function App() {
                         {localStorage.getItem('auth_token') ? <Redirect to="/"/> : <Register/>}
                     </Route>
 
-                    <Route path="/admin" name="Admin" render={(props) =>
-                        <MasterLayout {...props} />}/>
+                    {/*<Route path="/admin" name="Admin" render={(props) =>*/}
+                    {/*    <MasterLayout {...props} />}/>*/}
+
+                    <AdminPrivateRoute path="/admin" name="Admin"/>
+
                 </Switch>
             </Router>
         </div>
