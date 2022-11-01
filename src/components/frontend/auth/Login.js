@@ -30,7 +30,7 @@ function Login() {
             if(res.data.status === 200) {
                 localStorage.setItem('auth_token', res.data.token);
                 localStorage.setItem('auth_name', res.data.username);
-                swal("Success", res.data.message, "success");
+                swal("Welcome!", res.data.message, "success");
                 history.push('/');
             } else if(res.data.status === 401) {
                 swal("Invalid Credentials", res.data.message, "error");
