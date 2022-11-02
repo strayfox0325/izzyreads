@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\GenreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -18,15 +19,15 @@ use App\Http\Controllers\API\AuthController;
 // Auth
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-
-// Middleware
-Route::middleware('auth:sanctum')-> group(function() {
-    Route::get('isAuthenticated', function () {
-        return response()->json(['message'=>'Authenticated', 'status'=>200]);
-    });
-    Route::post('logout', [AuthController::class, 'logout']);
+Route::get('isAuthenticated', function () {
+    return response()->json(['message' => 'Authenticated', 'status' => 200]);
 });
+Route::post('logout', [AuthController::class, 'logout']);
+// Genre
+Route::post('add-genre', [GenreController::class, 'store']);
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
