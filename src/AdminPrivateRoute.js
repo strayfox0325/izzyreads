@@ -23,13 +23,25 @@ function AdminPrivateRoute({...rest}) {
         };
     }, []);
 
-    axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
-        if (err.response.status === 401) {
-            swal("Unauthorized", err.response.data.message, "warning");
-            history.push("/");
+    try {
+        axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+            if (err.response) {
+                swal("Unauthorized", err.response.data.message, "warning");
+                history.push("/");
+            }
+            return Promise.resolve();
+        });
+    } catch (err) {
+        console.log(err, err.response && err.response.data);
+
+        if (err.response && err.response.data) {
+
+            swal("Error", err.response.data.message, "warning");
+            return;
         }
-        return Promise.reject(err);
-    });
+
+        swal("Error", err.message, "warning");
+    }
 
     if (loading) {
         return <h1>Loading...</h1>
