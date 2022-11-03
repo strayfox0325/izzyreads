@@ -6,43 +6,47 @@ const Sidebar = () => {
         <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div className="sb-sidenav-menu">
                 <div className="nav">
-                    <div className="sb-sidenav-menu-heading">Core</div>
+                    <div className="sb-sidenav-menu-heading">Admin</div>
                     <Link className="nav-link" to="/admin/dashboard">
                         <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"/></div>
                         Dashboard
                     </Link>
-                    <Link className="nav-link" to="/admin/add-genre">
-                        <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"/></div>
-                        Add Genre
-                    </Link>
-                    <Link className="nav-link" to="/admin/title">
-                        <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"/></div>
-                        Title
-                    </Link>
+
                     <Link className="nav-link" to="/admin/profile">
                         <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"/></div>
                         Profile
                     </Link>
-                    <div className="sb-sidenav-menu-heading">Interface</div>
+
+                    <div className="sb-sidenav-menu-heading">Browse</div>
                     <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse"
-                       data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div className="sb-nav-link-icon"><i className="fas fa-columns"/></div>
-                        Layouts
+                        Genres
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"/></div>
                     </Link>
                     <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="layout-static.html">Static Navigation</Link>
-                            <Link className="nav-link" to="layout-sidenav-light.html">Light Sidenav</Link>
+                            <Link className="nav-link" to="/admin/add-genre">Add Genre</Link>
+                            <Link className="nav-link" to="/admin/view-genre">Genre List</Link>
                         </nav>
                     </div>
-                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                       aria-expanded="false" aria-controls="collapsePages">
-                        <div className="sb-nav-link-icon"><i className="fas fa-book-open"/></div>
-                        Pages
+
+                    <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse"
+                          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div className="sb-nav-link-icon"><i className="fas fa-columns"/></div>
+                        Titles
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"/></div>
                     </Link>
+                    <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                            <Link className="nav-link" to="/admin/add-title">Add Title</Link>
+                            <Link className="nav-link" to="/admin/view-title">Title List</Link>
+                        </nav>
+                    </div>
+
+
                     <div className="collapse" id="collapsePages" aria-labelledby="headingTwo"
                          data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
