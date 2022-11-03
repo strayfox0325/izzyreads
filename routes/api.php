@@ -25,6 +25,9 @@ Route::get('isAuthenticated', function () {
 Route::post('logout', [AuthController::class, 'logout']);
 // Genre
 Route::post('add-genre', [GenreController::class, 'store']);
+Route::get('view-genre', [GenreController::class, 'index']);
+Route::post('edit-genre{id}', [GenreController::class, 'edit']);
+Route::post('delete-genre{id}', [GenreController::class, 'delete']);
 
 
 
