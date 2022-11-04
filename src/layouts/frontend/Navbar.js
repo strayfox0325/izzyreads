@@ -10,14 +10,15 @@ function Navbar() {
     const logoutSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`/api/logout`).then(res=> {
-            if(res.data.status === 200) {
-                localStorage.removeItem('auth_token');
-                localStorage.removeItem('auth_name');
+        axios.post(`/api/logout`).then(res => {
+            if (res.data.status === 200) {
+                localStorage.removeItem("auth_token");
+                localStorage.removeItem("auth_name");
                 swal("Goodbye!", res.data.message, "success");
-                history.push('/');
+                history.push("/");
             }
         });
+
     }
 
     let authButtons;
@@ -34,7 +35,9 @@ function Navbar() {
     } else {
         authButtons = (
             <li className="nav-item">
-                <button type="button" onClick={logoutSubmit} className="nav-link btn btn-danger btn-sm text-white">Log Out</button>
+                <button type="button" onClick={logoutSubmit} className="nav-link btn btn-danger btn-sm text-white">Log
+                    Out
+                </button>
             </li>
         )
     }
