@@ -27,7 +27,7 @@ function ShowGenre() {
                 swal("Success", res.data.message, "success");
                 clicked.closest('tr').remove();
             } else if (res.data.status === 404) {
-                swal("Success", res.data.message, "success");
+                swal("Nothing to delete", res.data.message, "success");
                 clicked.innerText = "Delete";
             }
         });
