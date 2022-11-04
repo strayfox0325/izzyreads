@@ -22,15 +22,17 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('isAuthenticated', function () {
     return response()->json(['message' => 'Authenticated', 'status' => 200]);
 });
-Route::post('logout', [AuthController::class, 'logout']);
 // Genre
 Route::post('add-genre', [GenreController::class, 'store']);
 Route::get('view-genre', [GenreController::class, 'index']);
-Route::post('edit-genre{id}', [GenreController::class, 'edit']);
-Route::post('delete-genre{id}', [GenreController::class, 'delete']);
+Route::get('edit-genre/{id}', [GenreController::class, 'edit']);
+Route::put('update-genre/{id}', [GenreController::class, 'update']);
+Route::post('delete-genre/{id}', [GenreController::class, 'delete']);
 
-
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
 });
+
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
