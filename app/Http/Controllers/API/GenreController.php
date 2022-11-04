@@ -30,7 +30,7 @@ class GenreController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => 'No Genre ID Found.',
+                'message' => 'No genre ID found.',
             ]);
         }
     }
@@ -98,6 +98,22 @@ class GenreController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => 'Genre added successfully',
+            ]);
+        }
+    }
+
+    public function destroy($id) {
+        $genre = Genre::find($id);
+        if($genre) {
+            $genre->delete();
+            return response()->json([
+                'status'=>200,
+                'message'=>'Genre deleted successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status'=>404,
+                'message'=>'No genre ID found'
             ]);
         }
     }

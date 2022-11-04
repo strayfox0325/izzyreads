@@ -27,7 +27,7 @@ Route::post('add-genre', [GenreController::class, 'store']);
 Route::get('view-genre', [GenreController::class, 'index']);
 Route::get('edit-genre/{id}', [GenreController::class, 'edit']);
 Route::put('update-genre/{id}', [GenreController::class, 'update']);
-Route::post('delete-genre/{id}', [GenreController::class, 'delete']);
+Route::delete('delete-genre/{id}', [GenreController::class, 'destroy']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
