@@ -11,7 +11,7 @@ function EditGenre(props) {
     const [error, setError] = useState([]);
 
     useEffect(() => {
-        document.title = 'IzzyReads | Edit Genre';
+        document.title = 'IzzyReads | Edit AddGenre';
         const genre_id = props.match.params.id;
         axios.get(`/api/edit-genre/${genre_id}`).then(res => {
             if (res.data.status === 200) {
@@ -56,20 +56,20 @@ function EditGenre(props) {
                 <div className="card mt-4">
                     <div className="card-header">
                         <h4>Edit Genre
-                            <Link to="/admin/view-genre" className="btn btn-info btn-sm float-end">Back</Link>
+                            <Link to="/admin/view-genre" className="btn btn-info text-white float-end">Back</Link>
                         </h4>
                     </div>
                     <div className="card-body">
                         <form onSubmit={updateGenre}>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item" role="presentation">
-                                    <button className="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    <button className="nav-link active btn-info" id="home-tab" data-bs-toggle="tab"
                                             data-bs-target="#home"
                                             type="button" role="tab" aria-controls="home" aria-selected="true">Home
                                     </button>
                                 </li>
                                 <li className="nav-item" role="presentation">
-                                    <button className="nav-link" id="seo-tags-tab" data-bs-toggle="tab"
+                                    <button className="nav-link btn-info" id="seo-tags-tab" data-bs-toggle="tab"
                                             data-bs-target="#seo-tags"
                                             type="button" role="tab" aria-controls="seo-tags" aria-selected="false">SEO
                                         Tags
@@ -128,7 +128,7 @@ function EditGenre(props) {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-info px-4 float-end">Update</button>
+                            <button type="submit" className="btn btn-info text-white px-4 float-end">Update</button>
                         </form>
                     </div>
                 </div>

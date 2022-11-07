@@ -3,7 +3,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import {useHistory} from "react-router-dom";
 
-function Genre() {
+function AddGenre() {
 
     const history = useHistory();
 
@@ -37,7 +37,7 @@ function Genre() {
 
         axios.post(`/api/add-genre`, data).then(res => {
             if (res.data.status === 200) {
-                swal("Success", "Genre Added Successfully", "success");
+                swal("Success", "AddGenre Added Successfully", "success");
                 history.push("/admin/dashboard");
             } else if (res.data.status === 400) {
                 setGenre({...genreInput, error_list: res.data.errors});
@@ -51,12 +51,12 @@ function Genre() {
             <form onSubmit={submitGenre} id="genre_form">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        <button className="nav-link active btn-info" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
                                 type="button" role="tab" aria-controls="home" aria-selected="true">Home
                         </button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="nav-link" id="seo-tags-tab" data-bs-toggle="tab" data-bs-target="#seo-tags"
+                        <button className="nav-link btn-info" id="seo-tags-tab" data-bs-toggle="tab" data-bs-target="#seo-tags"
                                 type="button" role="tab" aria-controls="seo-tags" aria-selected="false">SEO Tags
                         </button>
                     </li>
@@ -108,10 +108,10 @@ function Genre() {
                         </div>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-info px-4 float-end">Submit</button>
+                <button type="submit" className="btn btn-info text-white px-4 float-end">Submit</button>
             </form>
         </div>
     );
 }
 
-export default Genre;
+export default AddGenre;

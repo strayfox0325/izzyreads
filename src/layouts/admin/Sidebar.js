@@ -33,12 +33,12 @@ const Sidebar = () => {
                     </div>
 
                     <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse"
-                          data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                          data-bs-target="#collapseTitles" aria-expanded="false" aria-controls="collapseTitles">
                         <div className="sb-nav-link-icon"><i className="fas fa-columns"/></div>
                         Titles
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"/></div>
                     </Link>
-                    <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                    <div className="collapse" id="collapseTitles" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
                             <Link className="nav-link" to="/admin/add-title">Add Title</Link>
