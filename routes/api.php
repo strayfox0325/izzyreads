@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\GenreController;
+use App\Http\Controllers\API\TitleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -28,6 +29,10 @@ Route::get('view-genre', [GenreController::class, 'index']);
 Route::get('edit-genre/{id}', [GenreController::class, 'edit']);
 Route::put('update-genre/{id}', [GenreController::class, 'update']);
 Route::delete('delete-genre/{id}', [GenreController::class, 'destroy']);
+Route::get('all-genres', [GenreController::class, 'all']);
+// Title
+Route::post('add-title', [TitleController::class, 'store']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);

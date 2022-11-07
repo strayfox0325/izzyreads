@@ -19,6 +19,14 @@ class GenreController extends Controller
         ]);
     }
 
+    public function all() {
+        $genre = Genre::where('status','0')->get();
+        return response()->json([
+            'status' => 200,
+            'genre' => $genre,
+        ]);
+    }
+
     public function edit($id): JsonResponse
     {
         $genre = Genre::find($id);
